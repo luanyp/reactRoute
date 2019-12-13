@@ -1,7 +1,7 @@
 import React from 'react'
 // import {releaseConfigure} from "../../utils/configRelease";
 //表格组件
-import TableList from "../../components/TableList/index";//导航
+import TableList from "../../components/TableList/index";  //表格
 import {Collapse } from 'antd';
 const Panel = Collapse.Panel;
 class HttpDemo extends React.Component {
@@ -12,9 +12,9 @@ class HttpDemo extends React.Component {
 			tableList: {},
 			pageIndex: 1,
 		};
-		//绑定挂载事件
 	}
-
+	//绑定挂载事件
+	
 	componentDidMount() {
 		this.DealList();
 	};
@@ -29,18 +29,19 @@ class HttpDemo extends React.Component {
 	//处理列表数据
 	DealList = () => {
 		// let _param = {'pageIndex': this.state.pageIndex};
-		let _param = {'id': '91b76ccd-2b5d-4d1a-ac44-39c7f4635d11'};
+		let _param = {'id': '7e628b0c-c830-4793-8028-64a5d484a1a5'};
 
-		let data = global.HttpData("get", global.GETUSERLIST, _param)
-		console.log(data)
+		let data = global.HttpData("get", global.DeviceInfo, _param)
 		data.then(res => {
 			if (!res) return;
-			let _res = Object.assign({}, JSON.parse(JSON.stringify(res)));
-			_res.header = [{title: '姓名', dataIndex: 'name', key: 'name',},
-				{title: '职称', dataIndex: 'displayName', key: 'displayName',},
-				{title: '账号', dataIndex: 'account', key: 'account',},
-				{title: '邮箱', dataIndex: 'email', key: 'email',},
-				{title: '电话', dataIndex: 'telphone', key: 'telphone',}]
+			let items = Object.assign({}, JSON.parse(JSON.stringify(res))).Content
+			let _res = {}
+			_res.items = items;
+			_res.header = [
+				{title: '设备名称', dataIndex: 'device_name', key: 0,},
+				{title: '设备编号', dataIndex: 'device_number', key: 1,},
+				{title: '设备类型', dataIndex: 'asset_type', key: 2,},
+			]
 			this.setState({
 				tableList: _res,
 			});

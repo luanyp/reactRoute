@@ -1,7 +1,7 @@
 /*网路请求配置*/
 import axios from 'axios';
 import {requestHeader} from './configRelease'
-axios.defaults.timeout = 100000;
+axios.defaults.timeout = 100;
 axios.defaults.baseURL = '';
 //http request 拦截器
 axios.interceptors.request.use(
@@ -41,12 +41,10 @@ axios.interceptors.response.use(
 
 export function get(url, params = {}) {
 	return new Promise((resolve, reject) => {
-
 		axios.get(url, {
 			params: params
 		})
 			.then(response => {
-
 				landing(url, params, response.data);
 				resolve(response.data);
 			})
@@ -120,13 +118,13 @@ export function HttpData (fecth,url, parm) {
 		switch (fecth){
 			case "get":
 				get(url, parm).then(function (response) {
-					_data = Object.assign({}, JSON.parse(JSON.stringify(response.result)));
+					_data = Object.assign({}, JSON.parse(JSON.stringify(response)));
 					resolve (_data);
 				}).catch(function (error) {})
 				break;
 			case "post":
 				post(url, parm).then(function (response) {
-					_data = Object.assign({}, JSON.parse(JSON.stringify(response.result)));
+					_data = Object.assign({}, JSON.parse(JSON.stringify(response.Content)));
 					resolve (_data);
 				}).catch(function (error) {})
 				break;
@@ -194,6 +192,7 @@ function msag(err) {
  * @param data
  */
 function landing(url, params, data) {
-	if (data.code === -1) {
+	if (data.Msg === 'ok') {
+		// console.log(data.Content)
 	}
 }

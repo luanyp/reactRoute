@@ -7,7 +7,7 @@ let domain = "";
 switch (releaseConfigure){
 	case 1:
 		//开发
-		domain = "app.esdgd.com/";
+		domain = "app.esdgd.com/api/";
 		break;
 	case 2:
 		//测试
@@ -21,10 +21,13 @@ switch (releaseConfigure){
 		break;
 }
 //项目后台发布名称
-let Backstage = "api/";
+let Backstage = "";
 
 //服务器域名
 let host = domain + Backstage;
 
 //请求基础数据
-global.GETUSERLIST = urlhttp+host+"assetaccountinfo/getassetaccountinfo";
+// global.GETUSERLIST = urlhttp+host+"assetaccountinfo/getassetaccountinfo";
+
+//获取设备基础信息
+global.DeviceInfo = urlhttp+host+"assetaccountinfo/getassetaccountinfo";

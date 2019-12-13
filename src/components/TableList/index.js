@@ -12,7 +12,6 @@ const rowSelection = {
 };
 console.log(rowSelection)
 class TableList extends React.Component {
-
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -30,12 +29,12 @@ class TableList extends React.Component {
 		const data =this.props.msg.items;
 		let pagination = {
 			total: this.props.msg.totalCount,
-			pageSize: 10,}
+			pageSize: 10,
+		}
 		return (
-
 			<div style={{background:"#fff"}}>
 				{/*{this.props.msg}*/}
-				<Table rowKey="ad" columns={columns} dataSource={data}
+				<Table rowKey="id" columns={columns} dataSource={data}
 				       pagination={pagination} onChange={this.handleChange}/>
 			</div>
 		)

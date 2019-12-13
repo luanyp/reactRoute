@@ -11,6 +11,12 @@
   background: none !important;
   
 }
+.App > div{
+  height: 100%;
+}
+.App > div > div{
+  height: 100%;
+}
 
 .App-header {
   background-color: #282c34;
@@ -41,3 +47,4 @@
 .App-contentMain{
 	padding: 20px;
 }
+

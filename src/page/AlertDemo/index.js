@@ -2,7 +2,6 @@ import React from 'react'
 import {Collapse, Modal, Button, Row, Col,Steps} from 'antd';
 
 const Panel = Collapse.Panel;
-const {Step} = Steps 
 
 class AlertDemo extends React.Component {
 	constructor (props) {
@@ -15,9 +14,17 @@ class AlertDemo extends React.Component {
 	}
 	showModal = (str) => {
 		console.log(str)
+		// window.location.href="../page/Login"
 		this.setState(function(state) {
-			return {visible: true,msg:state.msg+"-"+str};
+			return {
+				visible: true,msg:state.msg+"-"+str,
+				global: {
+					isUser: false
+				}
+			};
 		});
+		console.log(global)
+		window.location.href="../page/Login"
 	}
 	handleOk = (e) => {
 		console.log(this.state );
@@ -26,7 +33,7 @@ class AlertDemo extends React.Component {
 		});
 	}
 	handleCancel = (e) => {
-		console.log(e);
+		global.isUser = true
 		this.setState({
 			visible: false,
 		});

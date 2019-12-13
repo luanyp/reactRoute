@@ -10,7 +10,7 @@ switch (_domain) {
 		_parm = {
 			/* 'Content-Type':'application/x-www-form-urlencoded'*/
 			'Content-Type': 'application/json',
-			"ad": "ooo",
+			"ad": "admin",
 		};
 		break;
 	default:

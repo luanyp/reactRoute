@@ -3,11 +3,20 @@ import {Link} from 'react-router-dom';
 import {Menu, Icon} from 'antd';
 const menus = global.menus;
 //此组件的意义就是将数据抽离出来，通过传递数据去渲染
-
+console.log(menus)
 const IconFont = Icon.createFromIconfontCN({
   scriptUrl: '//at.alicdn.com/t/font_1239946_ubz1v0l6wd8.js',
 });
 class CustomMenu extends React.Component {
+	constructor(props){
+		super(props)
+		this.state = {
+			location: window.location
+		}
+	}
+	componentDidMount(){
+		// console.log(this.state.location)
+	}
 	handleClick = (e) => {
 		console.log('click ', e);
 	}
@@ -36,10 +45,10 @@ class CustomMenu extends React.Component {
 	}
 	render() {
 		return (
-
 				<Menu
 				onClick={this.handleClick}
-				defaultSelectedKeys={['/']}
+				// defaultSelectedKeys={this.state.defaultSelectedKeys}
+				defaultSelectedKeys={[this.state.location.pathname]}
 				defaultOpenKeys={['sub1']}
 				mode="vertical"
 				theme="dark"

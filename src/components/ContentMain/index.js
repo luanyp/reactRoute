@@ -1,21 +1,23 @@
 import React from 'react'
 //引入路由
-import {Route, Switch} from 'react-router-dom'
+import {Route, Switch,BrowserRouter,Link, Redirect} from 'react-router-dom'
 
 class ContentMain extends React.Component {
 	render() {
 		return (
 			<div>
-				<Switch>
-					<Route exact path='/' component={global.Main}/>
-					<Route exact path='/page/es6' component={global.es6}/>
-					<Route exact path='/page/general/fromDemo' component={global.FromDemo}/>
-					<Route exact path='/page/AlertDemo' component={global.Alert}/>
-					<Route exact path='/page/TableDemo' component={global.Table}/>
-					<Route exact path='/page/HttpDemo' component={global.HttpDemo}/>
-					<Route exact path='/page/TreeDemo' component={global.TreeDemo}/>
-					<Route exact path='/page/Health' component={global.Health}/>
-				</Switch>
+					  <Link to="/home">这里路由不显示</Link>
+					<Switch>
+						<Route exact path='/home' component={global.Home}/>
+						<Route path='/es6' component={global.es6}/>
+						<Route path='/general/fromDemo' component={global.FromDemo}/>
+						<Route path='/AlertDemo' component={global.Alert}/>
+						<Route path='/TableDemo' component={global.Table}/>
+						<Route path='/HttpDemo' component={global.HttpDemo}/>
+						<Route path='/TreeDemo' component={global.TreeDemo}/>
+						<Route path='/Health' component={global.Health}/>
+						{/* <Redirect to='/home' /> */}
+					</Switch>
 			</div>
 		)
 	}
