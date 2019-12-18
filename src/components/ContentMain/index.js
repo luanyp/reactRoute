@@ -1,14 +1,13 @@
 import React from 'react'
 //引入路由
-import {Route, Switch,BrowserRouter,Link, Redirect} from 'react-router-dom'
+import {Route, Switch, Redirect} from 'react-router-dom'
 
 class ContentMain extends React.Component {
 	render() {
 		return (
 			<div>
-					  <Link to="/home">这里路由不显示</Link>
 					<Switch>
-						<Route exact path='/home' component={global.Home}/>
+						<Route path='/home' component={global.Home}/>
 						<Route path='/es6' component={global.es6}/>
 						<Route path='/general/fromDemo' component={global.FromDemo}/>
 						<Route path='/AlertDemo' component={global.Alert}/>
@@ -16,7 +15,7 @@ class ContentMain extends React.Component {
 						<Route path='/HttpDemo' component={global.HttpDemo}/>
 						<Route path='/TreeDemo' component={global.TreeDemo}/>
 						<Route path='/Health' component={global.Health}/>
-						{/* <Redirect to='/home' /> */}
+						<Redirect to='/home' />
 					</Switch>
 			</div>
 		)

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 //全局文件
 import './main';
 //路由
-import {BrowserRouter,Switch,Route} from 'react-router-dom';
+import {BrowserRouter,Switch,Route,Redirect} from 'react-router-dom';
 
 import Login from "./page/Login";
 //UI-antd-按需引入
@@ -15,10 +15,11 @@ class App extends Component {
 		return (
 			<div className="App" style={{height:screenHeight}}>
 				<BrowserRouter >
-					<div>
+					<Switch>
 					  <Route exact path='/login' component={Login}/>
-					  <Route exact path='/' component={global.Main}/>
-					</div>
+					  <Route path='/' component={global.Main}/>
+						<Redirect to='/login' />
+					</Switch>
 				</BrowserRouter>
 			</div>
 		);

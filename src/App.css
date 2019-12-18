@@ -1,6 +1,9 @@
 .App {
   background: url(./assets/img/BG02.png) no-repeat;
   background-size: 100% 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .App-logo {
@@ -9,10 +12,10 @@
 }
 .ant-layout {
   background: none !important;
-  
 }
 .App > div{
   height: 100%;
+  width: 100%;
 }
 .App > div > div{
   height: 100%;

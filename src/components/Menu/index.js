@@ -47,7 +47,6 @@ class CustomMenu extends React.Component {
 		return (
 				<Menu
 				onClick={this.handleClick}
-				// defaultSelectedKeys={this.state.defaultSelectedKeys}
 				defaultSelectedKeys={[this.state.location.pathname]}
 				defaultOpenKeys={['sub1']}
 				mode="vertical"
