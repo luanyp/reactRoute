@@ -26,8 +26,8 @@ let Backstage = "";
 //服务器域名
 let host = domain + Backstage;
 
-//请求基础数据
-// global.GETUSERLIST = urlhttp+host+"assetaccountinfo/getassetaccountinfo";
+//登录
+global.login = urlhttp+host+"account/login";
 
 //获取设备基础信息
 global.DeviceInfo = urlhttp+host+"assetaccountinfo/getassetaccountinfo";

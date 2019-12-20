@@ -7,13 +7,17 @@
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+  /* animation: App-logo-spin infinite 20s linear; */
+  /* height: 40vmin; */
+}
+.App-logo img{
+  width: 40px;
+  height: 40px;
 }
 .ant-layout {
   background: none !important;
 }
-.App > div{
+.App > div.main{
   height: 100%;
   width: 100%;
 }

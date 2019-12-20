@@ -14,17 +14,16 @@ class AlertDemo extends React.Component {
 	}
 	showModal = (str) => {
 		console.log(str)
-		// window.location.href="../page/Login"
+
 		this.setState(function(state) {
 			return {
-				visible: true,msg:state.msg+"-"+str,
+				visible: true,
+				msg:state.msg+"-"+str,
 				global: {
 					isUser: false
 				}
 			};
 		});
-		console.log(global)
-		window.location.href="../page/Login"
 	}
 	handleOk = (e) => {
 		console.log(this.state );

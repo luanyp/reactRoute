@@ -1,9 +1,13 @@
 .login-form {
-  max-width: 300px;
+  width: 300px;
+  padding: 20px 20px 0;
+  border-radius: 6px;
+  background: rgba(254,254,254,0.1);
 }
-.login-form-forgot {
-  float: right;
+.login-form .ant-form-item-children span{
+  color: aliceblue !important;
 }
+
 .login-form-button {
   width: 100%;
 }

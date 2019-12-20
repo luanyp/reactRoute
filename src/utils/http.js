@@ -64,10 +64,8 @@ export function get(url, params = {}) {
 
 export function post(url, data) {
 	return new Promise((resolve, reject) => {
-		axios.post(url, data).then(response => {
-
-			//关闭进度条
-			resolve(response.data);
+		axios.post(url+'?_t='+new Date().getTime(), data).then(response => {
+			resolve(response);
 		}, err => {
 			reject(err)
 		})
@@ -124,8 +122,8 @@ export function HttpData (fecth,url, parm) {
 				break;
 			case "post":
 				post(url, parm).then(function (response) {
-					_data = Object.assign({}, JSON.parse(JSON.stringify(response.Content)));
-					resolve (_data);
+					_data = Object.assign({}, JSON.parse(JSON.stringify(response)));
+					resolve (_data.data);
 				}).catch(function (error) {})
 				break;
 			default:
