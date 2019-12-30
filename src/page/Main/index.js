@@ -1,13 +1,14 @@
 import React from 'react'
-import { Layout ,Popconfirm } from 'antd';
+import { Layout ,Popconfirm ,Icon} from 'antd';
 import {Redirect} from 'react-router-dom'
-
+import cookie from 'react-cookies'
 import CustomMenu from "../../components/Menu";//导航
 import ContentMain from '../../components/ContentMain'//主体
 // import imgUrl from './LOGO.png'
-
+import {getCookie,clearCookie} from '../../utils/common.js'
 const { Header, Content, Footer, Sider } = Layout;
 
+let test = cookie.load('token')
 
 let LayoutStyle = {
 	height: '100%',
@@ -18,19 +19,9 @@ let HeaderStyle = {
 	'justifyContent': 'space-between',
 	'alignItems': 'center'
 }
-function getCookie(key) {
-	const name = key + "=";
-	const ca = document.cookie.split(';');
-	for (let i = 0; i < ca.length; i++) {
-		const c = ca[i].trim();
-		if (c.indexOf(name) === 0) {
-			return c.substring(name.length, c.length);
-		}
-	}
-	return "";
-}
 
-global.user = JSON.parse(getCookie('userMsg'));
+global.token = JSON.parse(getCookie('token'));
+
 //主界面
 class Home extends React.Component {
 	// constructor(){
@@ -53,11 +44,12 @@ class Home extends React.Component {
 	// }
 
   confirm = () => {
+		clearCookie('token')
 		this.props.history.replace('/login')
   };
 
 	render() {
-    if(!global.user) {
+    if(!global.token) {
       // 自动跳转到登陆(在render()中)
       return <Redirect to='/login'/>
     }
@@ -76,7 +68,7 @@ class Home extends React.Component {
 							onConfirm={this.confirm}
 							placement="left"
 						>
-							<a href="#">exit</a>
+							<a href="#"><Icon type="logout"/></a>
 						</Popconfirm>
 					</Header>
 					<Layout>

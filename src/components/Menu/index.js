@@ -17,15 +17,17 @@ class CustomMenu extends React.Component {
 	componentWillMount(){
 		// console.log(this.state.location)
 	}
-	componentDidMount(){
+	componentDidMount(prevProps){
 		// console.log(this.state.location)
+		console.log('old props:', prevProps);
+		console.log('new props:', this.props);
 	}
 	handleClick = (e) => {
 		console.log('click ', e);
 	}
-	renderSubMenu = ({key, icon, title, subs}) => {
+	renderSubMenu = ({key, icon, title, subs, id}) => {
 		return (
-			<Menu.SubMenu key={key} title={<span>{icon && <IconFont type={icon}/>}<span>{title}</span></span>}>
+			<Menu.SubMenu key={key} title={<span>{icon && <IconFont type={icon}/>}<span>{title}</span></span>} id={id}>
 				{
 					subs && subs.map(item => {
 						return item.subs && item.subs.length > 0 ? this.renderSubMenu(item) : this.renderMenuItem(item)
@@ -34,9 +36,9 @@ class CustomMenu extends React.Component {
 			</Menu.SubMenu>
 		)
 	}
-	renderMenuItem = ({key, icon, title,}) => {
+	renderMenuItem = ({key, icon, title,id}) => {
 		return (
-			<Menu.Item key={key}>
+			<Menu.Item key={key} id={id}>
 					{/*{icon && <Icon type={icon}/>}*/}
 					{/*<span>{title}</span>*/}
 				<Link to={key}>

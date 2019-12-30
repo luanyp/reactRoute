@@ -1,36 +1,44 @@
 import React from 'react'
 import {Form, Icon, Input, Button, Checkbox,message, Divider} from 'antd'
 import './index.css' 
-
-// 设置cookie,默认是30天
-function setCookie(key, value) {
-  const d = new Date();
-  d.setTime(d.getTime() + (14 * 24 * 60 * 60 * 1000));
-  const expires = "expires=" + d.toGMTString();
-  document.cookie = key + "=" + value + "; " + expires;
-}
-
+import  {setCookie} from '../../utils/common.js'
 
 class Login extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
-    this.props.form.validateFields((err, values) => {
+    this.props.form.validateFields( async (err, values) => {
       if (!err) {
         const {username, password, remember} = values
         // const result = await reqLogin(username, password)
-        const result = global.HttpData("post", global.login, {username, password})
-        result.then(res => {
+        // const result = await global.HttpData("post", global.login, {username, password})
+        // console.log(result)
+
+          const res = await global.HttpData("post", global.login, {username, password})
+          console.log(res)
           if (!res) return;
           if(res.IsSuccess === true && res.Code === '00'){
             message.success('登陆成功',2)
+            global.user = res.Content
             if(remember){
-              setCookie('userMsg',JSON.stringify(res.Content))
+              setCookie('token',JSON.stringify(res.Content.token),14)
             }
             this.props.history.replace('/')
           }else{
             message.error(res.Content,2)
           }
-        })
+        // return
+/*         result.then(res => {
+          if (!res) return;
+          if(res.IsSuccess === true && res.Code === '00'){
+            message.success('登陆成功',2)
+            if(remember){
+              setCookie('token',JSON.stringify(res.Content.token),14)
+            }
+            this.props.history.replace('/')
+          }else{
+            message.error(res.Content,2)
+          }
+        }) */
       }
     });
   };

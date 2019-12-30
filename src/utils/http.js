@@ -41,7 +41,7 @@ axios.interceptors.response.use(
 
 export function get(url, params = {}) {
 	return new Promise((resolve, reject) => {
-		axios.get(url, {
+		axios.get(url+'?_='+new Date().getTime(), {
 			params: params
 		})
 			.then(response => {
@@ -49,7 +49,9 @@ export function get(url, params = {}) {
 				resolve(response.data);
 			})
 			.catch(err => {
-				reject(err);
+				// reject(err);
+				console.log(err)
+				alert(err)
 			})
 	})
 }
@@ -64,10 +66,13 @@ export function get(url, params = {}) {
 
 export function post(url, data) {
 	return new Promise((resolve, reject) => {
-		axios.post(url+'?_t='+new Date().getTime(), data).then(response => {
+		axios.post(url+'?_='+new Date().getTime(), data)
+		.then(response => {
 			resolve(response);
-		}, err => {
-			reject(err)
+		})
+		.catch(err => {
+			console.log(err)
+			alert(err)
 		})
 	})
 }

@@ -31,7 +31,7 @@ class HttpDemo extends React.Component {
 		// let _param = {'pageIndex': this.state.pageIndex};
 		let _param = {'id': '7e628b0c-c830-4793-8028-64a5d484a1a5'};
 
-		let data = global.HttpData("get", global.DeviceInfo, _param)
+		let data = global.HttpData("get", global.deviceInfo, _param)
 		data.then(res => {
 			if (!res) return;
 			let items = Object.assign({}, JSON.parse(JSON.stringify(res))).Content

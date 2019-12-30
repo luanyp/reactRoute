@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 //全局文件
 import './main';
+
 //路由
 import {BrowserRouter,Switch,Route,Redirect} from 'react-router-dom';
 

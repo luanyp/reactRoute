@@ -49,6 +49,11 @@ global.Health = Loadable({
 	loader: () => import('../page/Health'),
 	loading: Loading,
 });
+//用户管理
+global.person = Loadable({
+	loader: () => import('../page/Person/Person.js'),
+	loading: Loading,
+});
 
 //登陆界面
 global.Login = Loadable({
